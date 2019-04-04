@@ -5,6 +5,13 @@ exports.up = function(knex, Promise) {
         table
           .text('name')
           .notNullable();
+        table
+          .integer('cohort_id')
+          .unsigned()
+          .references('id')
+          .inTable('cohorts')
+          .onDelete('CASCADE')
+          .onUpdate('CASCADE');
     })
 };
 
